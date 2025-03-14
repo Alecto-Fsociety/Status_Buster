@@ -81,8 +81,9 @@ Feel free to **submit issues, feature requests, or pull requests** to improve St
 
 This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/Alecto-Fsociety/Alecto-Fsociety/blob/main/LICENSE) file for details.
 
-## 👨‍💻 Author
-
-Developed by [Alecto-Fsociety](https://github.com/Alecto-Fsociety). 🚀
+## **👥 Contact**
+Developer: **[Alecto-Fsociety](https://github.com/Alecto-Fsociety)**  
+GitHub: **[https://github.com/Alecto-Fsociety/PayloadCheckers](https://github.com/Alecto-Fsociety/PayloadCheckers)**  
+Proton Mail: goodbye_friend1111@proton.me
 
 
