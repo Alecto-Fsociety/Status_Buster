@@ -1,68 +1,91 @@
-# Status Buster
+# 🚀 Status Buster
 
-## 🔥 Overview
-**Status Buster** is a high-speed, multi-threaded **HTTP status code checker** designed for penetration testers, OSINT researchers, and web security analysts. This tool allows you to quickly analyze the status of multiple URLs, helping identify live, redirected, or inaccessible web resources.
+```
+███████╗████████╗ █████╗ ███████╗██╗   ██╗███████╗██████╗ 
+██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║   ██║██╔════╝██╔══██╗
+███████╗   ██║   ███████║███████╗██║   ██║█████╗  ██████╔╝
+╚════██║   ██║   ██╔══██║╚════██║██║   ██║██╔══╝  ██╔══██╗
+███████║   ██║   ██║  ██║███████║╚██████╔╝███████╗██║  ██║
+╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+```
 
-## 🚀 Features
-- **Multi-threaded scanning** – Uses multiprocessing to speed up URL checking.
-- **Supports HTTP & HTTPS** – Detects status codes for both `80` and `443` ports.
-- **Custom User-Agent Rotation** – Uses randomized user-agents from a file (`ua.txt`) to avoid detection.
-- **Automatic Logging** – Saves successful and error responses into structured logs.
-- **Timeout Handling** – Fast response detection with a configurable timeout.
+## 🌍 Overview
+
+Status Buster is a Python-based tool designed to check the HTTP response status of multiple URLs. It helps identify accessible and restricted web pages, making it useful for **web monitoring, penetration testing, and security research**.
+
+Unlike [**Payload Checkers**](https://github.com/Alecto-Fsociety/Payload_Checkers) 🔥, which focuses on **testing vulnerabilities such as XSS and SQL injection**, Status Buster is primarily used for **scanning URLs for accessibility and status code responses**.
+
+## ✨ Features
+
+- ⚡ **Multi-threading support** for faster scanning.
+- 🌐 **HTTP/HTTPS compatibility**.
+- 📝 **Saves results** to a log file.
+- 🎭 **Customizable user-agent** for stealth scanning.
+- 📂 **Supports URL lists** for bulk testing.
+- 🚀 **No external dependencies required** (pure Python implementation).
 
 ## 📌 Installation
-Clone the repository and install the required dependencies:
+
+No installation is required. Status Buster runs as a standalone script.
+
+## 🛠️ Usage
+
+### ▶️ Basic Usage:
+
+Run the script with a single URL:
 
 ```bash
-git clone https://github.com/Alecto-Fsociety/status_buster.git
-cd status_buster
-pip install -r requirements.txt  # Install dependencies if required
+python status_buster.py -u https://example.com
 ```
 
-## 🔧 Usage
-### **Basic Usage**
-Run the script with a list of URLs:
+### 📑 Scan multiple URLs from a file:
 
 ```bash
-python3 status_buster.py -ul urls.txt
+python status_buster.py -f urls.txt
 ```
 
-### **Options**
-| Option  | Description |
-|---------|------------|
-| `-ul` `<file>` | Path to the URL list (required) |
-| `-t` `<int>` | Number of threads to use (default: 4) |
+### 🎭 Customize the User-Agent:
 
-### **Example**
 ```bash
-python3 status_buster.py -ul urls.txt -t 10
+python status_buster.py -u https://example.com -a "Mozilla/5.0 (compatible; StatusBuster)"
 ```
-This will check the URLs in `urls.txt` using 10 concurrent threads.
 
-## 👤 Output Logs
-- **Checked URLs:** Stored in `checked_url/`
-- **Errors & Exceptions:** Stored in `err_logs/`
-- **Successful URLs:** Logged with timestamps for easy tracking.
+### 💾 Save results to a file:
 
-## 💡 How It Works
-1. Reads the URL list from the given file.
-2. Establishes a socket connection (HTTPS/SSL or HTTP).
-3. Sends a `GET` request with a randomized User-Agent.
-4. Parses the response headers to extract HTTP status codes.
-5. Saves results in structured logs.
+```bash
+python status_buster.py -u https://example.com -o results.log
+```
 
-## 🔥 Why Use Status Buster?
-- **Fast & Efficient:** Multi-threaded execution for rapid URL status checking.
-- **Customizable:** Modify the User-Agent file (`ua.txt`) to mimic different clients.
-- **Security-Oriented:** Useful for reconnaissance, OSINT, and pentesting tasks.
-- **Error Handling:** Automatically logs unreachable URLs for further analysis.
+## 📊 Example Output:
 
-## 🐝 License
-This project is licensed under the **MIT License**.
+```
+[200] https://example.com
+[403] https://example.com/admin
+[404] https://example.com/nonexistent
+```
+
+## 🔍 Difference from Payload Checkers
+
+| Feature       | Status Buster 🚀                               | [Payload Checkers](https://github.com/Alecto-Fsociety/Payload_Checkers) 🔥 |
+| ------------- | ---------------------------------------------- | ----------------------------------------------------------------------- |
+| Purpose       | URL status scanning 🖥️                         | Security vulnerability testing 🛡️                                      |
+| Functionality | Checks HTTP status codes (200, 403, 404, etc.) | Injects payloads to test XSS, SQLi, etc.                               |
+| Input         | URLs (single or list)                          | URLs + payloads                                                         |
+| Output        | Status logs 📜                                  | Vulnerability detection results 🛠️                                      |
+
+## ⚠️ Disclaimer
+
+This tool is intended for **educational and research purposes only**. Unauthorized use on systems without explicit permission is strictly prohibited and may be illegal. **Use at your own risk.** ❗
 
 ## 🤝 Contributing
-Pull requests and feature suggestions are welcome! Feel free to open an issue if you find any bugs.
 
-## 🛠️ Author
-Developed by **Alecto-Fsociety**  
-🔗 **GitHub:** [Alecto-Fsociety](https://github.com/Alecto-Fsociety)
+Feel free to **submit issues, feature requests, or pull requests** to improve Status Buster. Contributions are always welcome! ✨
+
+## 📜 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+Developed by [Alecto-Fsociety](https://github.com/Alecto-Fsociety). 🚀
+
