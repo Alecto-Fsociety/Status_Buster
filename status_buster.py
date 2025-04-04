@@ -61,8 +61,8 @@ class Status:
         url_list = self.url_list;lines = len(url_list)
         pathlib.Path(self.out_dir_name).mkdir(exist_ok=True)
         for point,url_data in enumerate(url_list,start=1):
-            base_parse = urlparse(url_data);scheme = base_parse.scheme;domain = base_parse.netloc;path = (base_parse.path).split(":")[0]
             try:
+                base_parse = urlparse(url_data);scheme = base_parse.scheme;domain = base_parse.netloc;path = (base_parse.path).split(":")[0]
                 if scheme == "https":
                     with (ssl.create_default_context()).wrap_socket(
                         socket.create_connection((domain,443)),server_hostname=domain
@@ -80,8 +80,7 @@ class Status:
                         status_match = re.search(r"HTTP/\d\.\d (\d+)",response_data)
                         status = status_match.group(1) if status_match else "000"
 
-                        sys.stdout.write(f"[-INFO-] Status_Check : {url_data} <{status}> [{point}/{lines}]\r\n")
-                        sys.stdout.flush()
+                        print(f"[-INFO-] Status_Check : {url_data} <{status}> [{point}/{lines}]")
 
                         if status in self.status_list:
                             with open(f"{self.out_dir_name}/{self.out_file_name}","a+",encoding="utf-8")as files:
@@ -102,8 +101,7 @@ class Status:
                         status_match = re.search(r"HTTP/\d\.\d (\d+)",response_data)
                         status = status_match.group(1) if status_match else "000"
 
-                        sys.stdout.write(f"[-INFO-] Status_Check : {url_data} <{status}> [{point}/{lines}]\r\n")
-                        sys.stdout.flush()
+                        print(f"[-INFO-] Status_Check : {url_data} <{status}> [{point}/{lines}]")
 
                         if status in self.status_list:
                             with open(f"{self.out_dir_name}/{self.out_file_name}","a+",encoding="utf-8")as files:
@@ -111,7 +109,6 @@ class Status:
 
             except Exception as e:
                 pathlib.Path(self.err_dir_name).mkdir(exist_ok=True)
-                #traceback.format_exc()
                 with open(f"{self.err_dir_name}/{self.err_file_name}","a+",encoding="utf-8")as err:
                     err.write(f"[-] {self.err_log}\n{traceback.format_exc()}\n")
 
